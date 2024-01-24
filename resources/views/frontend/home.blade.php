@@ -94,8 +94,6 @@
             </div>
         </div>
     </section>
-
-
     <!--==============================    Service Area    ==============================-->
     <section class="vs-service-wrapper space-top space-md-bottom">
         <div class="container">
