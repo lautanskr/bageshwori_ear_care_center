@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notice;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -31,7 +32,8 @@ class FrontendController extends Controller
 
     public function notice()
     {
-        return view('frontend.notice');
+        $notices = Notice::orderBy('created_at','desc')->get();
+        return view('frontend.notice',compact('notices'));
     }
     public function contact()
     {

@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-md-6 col-lg-3 col-xl-auto">
                     <div class="widget footer-widget  ">
-                        <h4 class="widget_title">Gallery Posts</h4>
+                        <h4 class="widget_title">Program Posts</h4>
                         <div class="footer-gallery">
                             <div class="gal-item">
                                 <a href="#"><img src="assets/img/widget/gal-1-1.jpg" alt="Gallery Image"

@@ -27,44 +27,18 @@
                         <div class="widget  ">
                             <h3 class="widget_title">Recent Notice</h3>
                             <div class="recent-post-wrap">
-
-                                <div class="thumb-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="assets/img/widget/thumb-1-1.jpg"
-                                                alt="Blog Image"></a>
+                                @foreach ($notices as $notice)
+                                    <div class="thumb-post">
+                                        <div class="media-img">
+                                            <a href="{{route('admin_notice.show',$notice->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="50" width="50"
+                                                    alt="Blog Image"></a>
+                                        </div>
+                                        <div class="media-body ">
+                                            <p class="post-title"><a href="{{route('admin_notice.show',$notice->id)}}" class="text-dark" target="_blank">{!!$notice->description!!}</a></p>
+                                            <a class="post-date" href="blog.html"><i class="fal fa-calendar-alt"></i>Posted date: {{$notice->published_date}}</a>
+                                        </div>
                                     </div>
-                                    <div class="media-body ">
-                                        <h4 class="post-title"><a href="blog-details.html">Extend market the driven Extend market the drivenExtend market the driven Extend market the drivenExtend market the drivenExtend market the driven Extend market the drivenExtend market the driven   results</a></h4>
-                                        <a class="post-date" href="blog.html"><i class="fal fa-calendar-alt"></i>Mar 21,
-                                            2023</a>
-                                    </div>
-                                </div>
-
-                                <div class="thumb-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="assets/img/widget/thumb-1-2.jpg"
-                                                alt="Blog Image"></a>
-                                    </div>
-                                    <div class="media-body ">
-                                        <h4 class="post-title"><a href="blog-details.html">The purpose lorem ipsum distract
-                                            </a></h4>
-                                        <a class="post-date" href="blog.html"><i class="fal fa-calendar-alt"></i>Mar 21,
-                                            2023</a>
-                                    </div>
-                                </div>
-
-                                <div class="thumb-post">
-                                    <div class="media-img">
-                                        <a href="blog-details.html"><img src="assets/img/widget/thumb-1-3.jpg"
-                                                alt="Blog Image"></a>
-                                    </div>
-                                    <div class="media-body ">
-                                        <h4 class="post-title"><a href="blog-details.html">Until recently, the prevailing
-                                                view</a></h4>
-                                        <a class="post-date" href="blog.html"><i class="fal fa-calendar-alt"></i>Mar 21,
-                                            2023</a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </aside>

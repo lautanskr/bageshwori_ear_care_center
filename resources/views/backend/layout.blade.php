@@ -4,15 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 3 | Dashboard</title>
+    <title>Admin-@yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    {{-- DataTable --}}
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
     <!-- JQVMap -->
@@ -40,7 +46,7 @@
                             class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="{{route('home')}}" class="nav-link">Go to website</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
@@ -62,7 +68,7 @@
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
-               
+
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
@@ -73,29 +79,29 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> Profile
-                            <span class="float-right text-muted text-sm">3 mins</span>
+
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="{{route('home')}}" class="dropdown-item">
+                        <a href="{{ route('home') }}" class="dropdown-item">
                             <i class="fas fa-home mr-2"></i>Go to website
-                            <span class="float-right text-muted text-sm">12 hours</span>
+
                         </a>
                         <div class="dropdown-divider"></div>
-                        <form action="{{route("logout")}}" method="POST">
+
+                        <a href="{{ route('logout') }}" class="dropdown-item"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-users mr-2"></i>
+                            Logout
+
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                            @method('POST')
-                            <button class="dropdown-item"> <i class="fas fa-users mr-2"></i> Logout
-                                <span class="float-right text-muted text-sm">2 days</span></button>
-                            {{-- <a href="#" class="dropdown-item">
-                                <i class="fas fa-users mr-2"></i> Logout
-                                <span class="float-right text-muted text-sm">2 days</span>
-                            </a> --}}
-                            </form>
+                        </form>
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer"></a>
                     </div>
                 </li>
-             
+
             </ul>
         </nav>
         <!-- /.navbar -->
@@ -129,29 +135,30 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
-                            <a href="{{route('dashboard')}}"  class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
+                            <a href="{{ route('dashboard') }}"
+                                class="nav-link {{ Route::currentRouteName() == 'dashboard' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
-                            
+
                         </li>
-                      
+
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link {{ Route::currentRouteName() == 'service' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
-                                    Services   
+                                    Services
                                 </p>
                             </a>
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-book"></i>
+                            <a href="{{ route('admin_notice.index') }}" class="nav-link {{ Route::currentRouteName() == 'admin_notice.index' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-book "></i>
                                 <p>
-                                    Notice
+                                    Notice 
                                 </p>
                             </a>
                         </li>
@@ -159,7 +166,7 @@
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>
-                                    Program   
+                                    Program
                                 </p>
                             </a>
                         </li>
@@ -173,33 +180,38 @@
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
-                              <i class="nav-icon fas fa-cog"></i>
-                              <p>
-                                Setting
-                                <i class="right fas fa-angle-left"></i>
-                              </p>
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>
+                                    Setting
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
                             <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                <a href="pages/charts/chartjs.html" class="nav-link">
-                                  <i class="fas fa-user nav-icon"></i>
-                                  <p>Profile</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="{{route('home')}}"  class="nav-link">
-                                  <i class="fas fa-home nav-icon"></i>
-                                  <p>Go to website</p>
-                                </a>
-                              </li>
-                              <li class="nav-item">
-                                <a href="pages/charts/inline.html" class="nav-link">
-                                  <i class="far fa-circle nav-icon"></i>
-                                  <p>Logout</p>
-                                </a>
-                              </li>
+                                <li class="nav-item">
+                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                        <i class="fas fa-user nav-icon"></i>
+                                        <p>Profile</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('home') }}" class="nav-link">
+                                        <i class="fas fa-home nav-icon"></i>
+                                        <p>Go to website</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('logout') }}" class="ml-2 nav-link"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-users mr-2"></i>
+                                        Logout
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
-                          </li>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -237,6 +249,11 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- ChartJS -->
@@ -263,6 +280,30 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <!-- Summernote -->
+    <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+   
+    <script>
+
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            // Summernote
+            $('.textarea').summernote()
+        });
+
+    </script>
 </body>
 
 </html>
