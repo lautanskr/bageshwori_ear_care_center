@@ -30,12 +30,12 @@
                                 @foreach ($notices as $notice)
                                     <div class="thumb-post">
                                         <div class="media-img">
-                                            <a href="{{route('admin_notice.show',$notice->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="50" width="50"
+                                            <a href="{{route('notice_show',$notice->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="50" width="50"
                                                     alt="Blog Image"></a>
                                         </div>
                                         <div class="media-body ">
-                                            <p class="post-title"><a href="{{route('admin_notice.show',$notice->id)}}" class="text-dark" target="_blank">{!!$notice->description!!}</a></p>
-                                            <a class="post-date" href="blog.html"><i class="fal fa-calendar-alt"></i>Posted date: {{$notice->published_date}}</a>
+                                            <p class="post-title"><a href="{{route('notice_show',$notice->id)}}" class="text-dark" target="_blank">{!!$notice->description!!}</a></p>
+                                            <a class="post-date" href="{{route('notice_show',$notice->id)}}" target="_blank"><i class="fal fa-calendar-alt"></i>Posted date: {{$notice->published_date}}</a>
                                         </div>
                                     </div>
                                 @endforeach

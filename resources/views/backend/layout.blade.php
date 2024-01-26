@@ -77,7 +77,7 @@
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                         <span class="dropdown-item dropdown-header">Setting</span>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{{url('admin/profile')}}" class="dropdown-item">
                             <i class="fas fa-user mr-2"></i> Profile
 
                         </a>
@@ -146,7 +146,7 @@
                         </li>
 
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link {{ Route::currentRouteName() == 'service' ? 'active' : '' }}">
+                            <a href="{{route('admin_service.index')}}" class="nav-link {{ Route::currentRouteName() == 'service' ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-chart-pie"></i>
                                 <p>
                                     Services
@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin_program.index')}}" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p>
                                     Program
@@ -179,6 +179,14 @@
                             </a>
                         </li>
                         <li class="nav-item has-treeview">
+                            <a href="{{route('admin_carousel.edit',1)}}" class="nav-link">
+                                <i class="nav-icon fas fa-circle"></i>
+                                <p>
+                                    Carousel
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-cog"></i>
                                 <p>
@@ -188,7 +196,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <a href="{{url('admin/profile')}}" class="nav-link">
                                         <i class="fas fa-user nav-icon"></i>
                                         <p>Profile</p>
                                     </a>

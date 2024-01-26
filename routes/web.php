@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +27,7 @@ Route::get('/service', [FrontendController::class, 'service'])->name('service');
 Route::get('/program', [FrontendController::class, 'program'])->name('program');
 Route::get('/notice', [FrontendController::class, 'notice'])->name('notice');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
-
+Route::get('/notice_show/{id}',[FrontendController::class,'notice_show'])->name('notice_show');
 // Admin interface
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
@@ -34,9 +37,13 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     // Notice
     Route::resource('admin_notice', NoticeController::class);
+    // Program
+    Route::resource('admin_program', ProgramController::class);
+    Route::resource('admin_service', ServiceController::class);
+    Route::resource('admin_carousel', CarouselController::class);
 });
+
 
 require __DIR__ . '/auth.php';

@@ -6,7 +6,7 @@
         <div class="vs-hero-carousel" data-navprevnext="true" data-height="800" data-container="1900"
             data-slidertype="responsive">
             <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-1.jpg" alt="Hero Image" class="ls-bg">
+                <img src="documents/carousels/{{$carousel->home}}" alt="Hero Image" class="ls-bg">
                 <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;"
                     data-ls-tablet="left: 100px; top: 80px; font-size: 92px;"
                     data-ls-laptop="left: 100px; top: 120px; font-size: 82px;"
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-2.jpg" alt="Hero Image" class="ls-bg">
+                <img src="documents/carousels/{{$carousel->about}}" alt="Hero Image" class="ls-bg">
                 <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;"
                     data-ls-tablet="left: 100px; top: 80px; font-size: 92px;"
                     data-ls-laptop="left: 100px; top: 120px; font-size: 82px;"
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="ls-slide" data-ls="duration: 13000; transition2d: 5;">
-                <img src="assets/img/hero/h-bg-3-3.jpg" alt="Hero Image" class="ls-bg">
+                <img src="documents/carousels/{{$carousel->service}}" alt="Hero Image" class="ls-bg">
                 <h1 class="text-title ls-l ls-responsive" data-ls-mobile="left: 100px; top: 120px; font-size: 120px;"
                     data-ls-tablet="left: 100px; top: 80px; font-size: 92px;"
                     data-ls-laptop="left: 100px; top: 120px; font-size: 82px;"

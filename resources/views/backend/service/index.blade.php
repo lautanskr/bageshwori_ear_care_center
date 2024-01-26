@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Notice</h1>
+                        <h1>Service</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Notice</li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Service</li>
                         </ol>
                     </div>
                 </div>
@@ -39,9 +39,9 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">List of notice</h3>
-                                <a href="{{ route('admin_notice.create') }}" class="btn btn-primary float-right"> <i
-                                        class="fa fa-plus"></i> Add notice</a>
+                                <h3 class="card-title">List of service</h3>
+                                <a href="{{ route('admin_service.create') }}" class="btn btn-primary float-right"> <i
+                                        class="fa fa-plus"></i> Add Service</a>
                             </div>
 
                             <!-- /.card-header -->
@@ -51,41 +51,36 @@
                                         <tr>
                                             <th>S.N</th>
                                             <th>Published Date</th>
-                                            <th>Document</th>
+                                            <th>Image</th>
+                                            <th>Title</th>
                                             <th>Description</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
-                                        @foreach ($notice as $list)
+                                        @foreach ($services as $list)
                                             <tr>
                                                 <td>{{ $i++ }}</td>
-                                                <td class="badge badge-danger m-2 p-3">{{ $list->published_date }}</td>
+                                                <td>{{ $list->created_at }}</td>
                                                 <td>
-                                                    @isset($list->document)
-                                                        <a href="{{route('admin_notice.show',$list->id)}}" target="_blank"><img src="/documents/logo/document_logo.png" height="40"
-                                                            width="40" alt=""></a>
-                                                    @endisset
+                                                    <img src="/documents/services/{{ $list->image }}" height="40"
+                                                        width="40" alt="">
                                                 </td>
-                                                <td>{!! $list->description !!}</td>
+                                                <td>{{ $list->title }}</td>
+                                                <td>{!! Str::limit($list->description,100) !!}</td>
                                                 <td>
-                                                    <form action="{{ route('admin_notice.destroy', $list->id) }}"
+                                                    <form action="{{ route('admin_service.destroy', $list->id) }}"
                                                         method="POST" enctype="multipart/form-data">
 
-                                                        <a class="btn btn-info" target="_blank"
-                                                            href="{{ route('admin_notice.show', $list->id) }}"><i
-                                                                style='font-size:15px' id="view"
-                                                                class='fas'>&#xf06e;</i></a>
-
+                                                        
                                                         <a class="btn btn-primary"
-                                                            href="{{ route('admin_notice.edit', $list->id) }}"><i
+                                                            href="{{ route('admin_service.edit', $list->id) }}"><i
                                                                 style='font-size:15px' id="edit"
                                                                 class='fas'>&#xf044;</i></a>
 
                                                         @csrf
                                                         @method('DELETE')
-
                                                         <button type="submit" class="btn btn-danger"
                                                             onclick="return confirm('Are you sure want to delete?')"><i
                                                                 style='font-size:15px' class='fas'>&#xf1f8;</i></button>
