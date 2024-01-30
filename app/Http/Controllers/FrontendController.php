@@ -18,8 +18,10 @@ class FrontendController extends Controller
      */
     public function home()
     {
+        $services = Service::latest()->get();
+        $programs = Program::latest()->limit(4)->get();
         $carousel = Carousel::where('id',1)->first();
-        return view('frontend.home',compact('carousel'));
+        return view('frontend.home',compact('carousel','services','programs'));
     }
 
     public function about()
@@ -29,7 +31,8 @@ class FrontendController extends Controller
     public function service()
     {
         $services = Service::paginate(5);
-        return view('frontend.service',compact('services'));
+        $carousel = Carousel::where('id',1)->first();
+        return view('frontend.service',compact('services','carousel'));
     }
     public function program()
     {
